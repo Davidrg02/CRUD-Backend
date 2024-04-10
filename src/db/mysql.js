@@ -93,6 +93,14 @@ function filter(table, idCategoria, FilteredField) {
     });
 }
 
+function search(table, nameField, name) {
+    return new Promise((resolve, reject) => {
+        connection.query(`SELECT * FROM ${table} WHERE ${nameField} = '${name}'`, (error, data) => {
+            return error ? reject(error) : resolve(data);
+        });
+    });
+}
+
 module.exports = {
     all,
     one,
@@ -100,6 +108,7 @@ module.exports = {
     update,
     remove,
     query,
-    filter
+    filter,
+    search
 }
 
