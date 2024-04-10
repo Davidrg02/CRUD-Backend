@@ -1,8 +1,7 @@
 const db = require('../../db/mysql');
 
-const table = 'MUNICIPIO';
-const idField = 'idMunicipio';
-const FilteredField = 'municipioNombre';
+const table = 'PERSONA';
+const idField = 'idPersona';
 
 function all() {
     return db.all(table);
