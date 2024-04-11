@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.get('/', all);
 router.get('/:id', one);
+router.get('/search/:name', search);
 router.post('/', insert);
 router.put('/:id', update);
 router.delete('/:id', remove);
@@ -58,7 +59,14 @@ async function remove(req, res, next) {
     }
 };
 
-
+async function search(req, res, next) {
+    try {
+        const user = await controller.search(req.params.name);
+        response.success(req, res, user, 200);
+    } catch (error) {
+        next(error);
+    }
+}
 
 
 module.exports = router;

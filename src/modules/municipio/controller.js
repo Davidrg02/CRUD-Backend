@@ -2,6 +2,7 @@ const db = require('../../db/mysql');
 
 const table = 'MUNICIPIO';
 const idField = 'idMunicipio';
+const nameField = 'municipioNombre';
 
 function all() {
     return db.all(table);
@@ -23,11 +24,16 @@ function remove(id) {
     return db.remove(table, id, idField);
 }
 
+function search(name) {
+    return db.filter(table, name, nameField);
+}
+
 
 module.exports = {
     all,
     one,
     insert,
     update,
-    remove
+    remove,
+    search
 }
