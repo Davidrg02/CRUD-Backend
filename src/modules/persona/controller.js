@@ -25,7 +25,7 @@ function remove(id) {
 }
 
 function search(name) {
-    return db.filter(table, name, nameField);
+    return db.search(table, nameField, name);
 }
 
 module.exports = {

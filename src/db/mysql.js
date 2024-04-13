@@ -95,11 +95,17 @@ function filter(table, idCategoria, FilteredField) {
 
 function search(table, nameField, name) {
     return new Promise((resolve, reject) => {
-        connection.query(`SELECT * FROM ${table} WHERE ${nameField} = '${name}'`, (error, data) => {
+        // Utilizamos placeholders para los parámetros de la consulta
+        const query = `SELECT * FROM ?? WHERE ?? LIKE ?`;
+        const values = [table, nameField, `%${name}%`]; // Los parámetros se pasan como un array
+
+        // connection.query se encarga de escapar los valores correctamente
+        connection.query(query, values, (error, data) => {
             return error ? reject(error) : resolve(data);
         });
     });
 }
+
 
 module.exports = {
     all,
