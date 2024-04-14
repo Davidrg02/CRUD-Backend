@@ -106,6 +106,18 @@ function search(table, nameField, name) {
     });
 }
 
+function customQuery(query) {
+    return new Promise((resolve, reject) => {
+        connection.query(query, (error, results) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(results);
+            }
+        });
+    });
+}
+
 
 module.exports = {
     all,
@@ -115,6 +127,7 @@ module.exports = {
     remove,
     query,
     filter,
-    search
+    search,
+    customQuery
 }
 

@@ -7,6 +7,7 @@ const municipios = require('./modules/municipio/routes');
 const departamentos = require('./modules/departamento/routes');
 const personas = require('./modules/persona/routes');
 const viviendas = require('./modules/vivienda/routes');
+const viviendas_personas = require('./modules/viviendas-personas/routes');
 const errors = require('./network/errors');
 
 const app = express();
@@ -27,6 +28,7 @@ app.use('/api/municipios', municipios);
 app.use('/api/departamentos', departamentos);
 app.use('/api/personas', personas);
 app.use('/api/viviendas', viviendas);
+app.use('/api/viviendas-personas', viviendas_personas);
 
 app.use(errors);
 
